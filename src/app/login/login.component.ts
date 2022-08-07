@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,8 +19,8 @@ export class LoginComponent implements OnInit {
     1001:{acno:1001,unname:"mila",password:1001,balance:3000},
     10002:{acno:1002,unname:"mil",password:1002,balance:4000}
   }
-
-  constructor() { }
+// router -variable name 
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -29,18 +30,18 @@ export class LoginComponent implements OnInit {
     
   // }
 
-  acnochange(event:any){
-    this.acno=event.target. value
-    // console.log(this.acno);
+  // acnochange(event:any){
+  //   this.acno=event.target. value
+  //   // console.log(this.acno);
     
     
-  }
-  changepsw(event:any){
-    this.psw=event.target.value
+  // }
+  // changepsw(event:any){
+  //   this.psw=event.target.value
 
-    console.log(this.psw)
+  //   console.log(this.psw)
     
-  }
+  // }
 
   // login using template referencing variable
   // two way binding
@@ -66,7 +67,12 @@ login(){
   if(acno in database){
 
     if(psw==database[acno]["password"]){
-      alert("login successfully")
+     
+    alert("login successfully")
+
+  
+    this.router.navigateByUrl("dashboard")
+
 
     }
     else{
